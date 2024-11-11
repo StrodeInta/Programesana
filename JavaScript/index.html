@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automātisks Datums un Laiks</title>
+    <style>
+        /* Stils datuma un laika elementam */
+        #datetime {
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Virsraksts lapai -->
+    <h1>Automātisks Datuma un Laika Rādījums</h1>
+    <!-- Šī vieta tiks izmantota, lai parādītu datumu un laiku -->
+    <div id="datetime"></div>
+
+    <!-- JavaScript kods, lai atjauninātu datumu un laiku -->
+    <script>
+        // Funkcija, kas iegūst pašreizējo datumu un laiku un formatē to
+        function showDateTime() {
+            // Izveido jaunu datuma objektu
+            const now = new Date();
+
+            // Formatē datumu uz vietējo formātu (piemēram, "DD/MM/GGGG")
+            const formattedDate = now.toLocaleDateString();
+
+            // Formatē laiku uz vietējo formātu (piemēram, "HH:MM:SS")
+            const formattedTime = now.toLocaleTimeString();
+
+            // Atjauno HTML elementu ar ID "datetime", lai rādītu datumu un laiku
+            document.getElementById('datetime').innerText = `Datums: ${formattedDate}, Laiks: ${formattedTime}`;
+        }
+
+        // Izsauc funkciju, lai uzreiz parādītu datumu un laiku
+        showDateTime();
+
+        // Atjauno datumu un laiku ik pēc 1000 milisekundēm (1 sekundes)
+        setInterval(showDateTime, 1000);
+    </script>
+</body>
+</html>
