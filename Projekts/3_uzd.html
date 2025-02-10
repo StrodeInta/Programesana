@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Pašreizējais laiks piemērotā formātā procesa pierakstam (log):
+        // Formāts: "29/12/2020, 15:56:11"
+        let tagad = new Date().toLocaleString();
+
+        // Tikai stundas:minūtes:sekundes:
+        let laiksHM = tagad.split(", ")[1]; // Laboju split metodi, lai precīzi atdalītu laiku
+
+        // Tikai datums:
+        let datums = tagad.split(", ")[0]; // Laboju split metodi, lai precīzi atdalītu datumu
+
+        // Pašreizējais laiks pilnā formātā:
+        // Piemēram: Tue Dec 29 2020 15:58:29 GMT+0200 (Eastern European Standard Time)
+        let laiksPilns = new Date(); // Labots nosaukums, lai nebūtu konflikta ar citu "laiks" mainīgo
+
+        // Nedēļas diena 0-6 (0 - svētdiena, 1 - pirmdiena utt.):
+        let nedelasDiena = laiksPilns.getDay();
+
+        // Mēnesis 0-11 (janvāris ir 0 mēnesis, decembris - 11):
+        let menesis = laiksPilns.getMonth();
+
+        // Mēneša diena (1-31):
+        let menesaDiena = laiksPilns.getDate();
+
+        // Debug log, lai pārbaudītu vērtības:
+        console.log("Pilnais datums un laiks:", tagad);
+        console.log("Tikai laiks (stundas:minūtes:sekundes):", laiksHM);
+        console.log("Tikai datums:", datums);
+        console.log("Pilnais laiks objekts:", laiksPilns);
+        console.log("Nedēļas diena (0-6):", nedelasDiena);
+        console.log("Mēnesis (0-11):", menesis);
+        console.log("Mēneša diena (1-31):", menesaDiena);
+    </script>
+</body>
+</html>

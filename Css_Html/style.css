@@ -1,0 +1,23 @@
+/* Mainīgais stils */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 10px;
+    background-color: #f9f9f9; /* Viegls pelēkais fons */
+}
+
+/* Stils virsrakstam */
+h1 {
+    color: green; /* Zaļa krāsa */
+    text-align: center;
+}
+
+/* Stils teksta lodziņam */
+.text-box {
+    border: 2px solid blue; /* Zils rāmis */
+    background-color: #e6f7ff; /* Gaiši zils fons */
+    padding: 20px;
+    margin: 10px auto;
+    width: 50%;
+    text-align: center;
+}

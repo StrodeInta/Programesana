@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lejupielādēt CSV</title>
+</head>
+<body>
+    <script>
+        // Definē nepieciešamās mainīgās
+        let universalBOM = "\uFEFF"; // BOM priekš saderības
+        let csvDati = "Vārds,Vecums,Valsts\nJānis,30,Latvija\nAnna,25,UK";
+        let datnesNosaukums = "dati.csv";
+
+        // Izveido lejupielādes elementu
+        let datne = document.createElement("a");
+        datne.setAttribute('href', 'data:text/csv;charset=utf-8,' + encodeURIComponent(universalBOM + csvDati));
+        datne.setAttribute('download', datnesNosaukums);
+        datne.style.display = 'none';
+
+        // Pievieno elementu dokumentam, noklikšķina un izdzēš
+        document.body.appendChild(datne);
+        datne.click();
+        document.body.removeChild(datne);
+    </script>
+</body>
+</html>
