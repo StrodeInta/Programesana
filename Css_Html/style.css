@@ -14,8 +14,8 @@ h1 {
 
 /* Stils teksta lodziņam */
 .text-box {
-    border: 2px solid blue; /* Zils rāmis */
-    background-color: #e6f7ff; /* Gaiši zils fons */
+    border: 2px solid rgb(157, 0, 131); /* Zils rāmis */
+    background-color: #97ffb8; /* Gaiši zils fons */
     padding: 20px;
     margin: 10px auto;
     width: 50%;
