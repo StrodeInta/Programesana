@@ -1,40 +1,99 @@
 body {
-    font-family: CentCentury Gothic, sans-serif;
-    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    background-image: url("vsk.jpg");
+    background-size: cover;
+    background-position: center;
     color: #333;
     text-align: center;
     padding: 50px;
+    position: relative;
+    animation: backgroundMove 20s infinite alternate ease-in-out;
+}
+
+/* Fona lēna kustība */
+@keyframes backgroundMove {
+    from { background-position: center; }
+    to { background-position: center 20px; }
+}
+
+/* Tumšāks pārklājums virs fona attēla */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.4); 
+    z-index: -1;
+}
+
+/* Loterijas bloks ar stikla efektu */
+.container {
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 25px 25px;
+    max-width: 320px;
+    width: 100%;
+    margin: auto;
+    animation: fadeIn 1.2s ease;
+}
+
+/* Parādīšanās animācija */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
 }
 
 h1 {
-    color: #011f02;
-    font-size: 72px;
-    margin-bottom: 20px;
+    color: #012002;
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 p {
-    font-size: 36px;
+    font-size: 1.2em;
     margin-bottom: 20px;
+    color: #042300;
 }
 
 button {
-    background-color: #044806;
+    background-color: #4CAF50;
     color: white;
     border: none;
     padding: 15px 30px;
     font-size: 1.2em;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Klikšķa efekts */
+button:active {
+    transform: scale(0.95);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 button:hover {
-    background-color: #aa0319;
+    background-color: #45a049;
+    transform: scale(1.05);
 }
 
 #rezultats {
-    font-size: 72px;
+    font-size: 1.6em;
     margin-top: 20px;
     font-weight: bold;
-    color: #03033e;
+    color: #350101;
+    opacity: 100;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(10px);
+}
+
+/* Rezultāts parādās ar animāciju */
+#rezultats.show {
+    opacity: 1;
+    transform: translateY(0);
 }
