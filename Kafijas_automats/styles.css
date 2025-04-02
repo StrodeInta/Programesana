@@ -1,0 +1,80 @@
+/* Vispārējie stili */
+body {
+    font-family: Arial, sans-serif; /* Nosaka fontu */
+    background-color: #f4e9dc; /* Fona krāsa */
+    display: flex; /* Lieto flexbox izkārtojumu */
+    justify-content: center; /* Centē saturu horizontāli */
+    align-items: center; /* Centē saturu vertikāli */
+    height: 100vh; /* Aizņem visu ekrāna augstumu */
+    margin: 0; /* Noņem ārējās malas */
+    overflow: hidden; /* Novērš ritināšanu */
+}
+
+/* Kafijas aparāta konteiners */
+#saturs {
+    background: #fff; /* Balts fons */
+    border-radius: 15px; /* Noapaļoti stūri */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Viegls ēnojums */
+    padding: 20px; /* Iekšējās atstarpes */
+    text-align: center; /* Centē tekstu */
+    height: auto;
+    max-height: 90vh; /* Maksimālais augstums 90% no ekrāna */
+    overflow-y: auto; /* Atļauj vertikālo ritināšanu */
+}
+
+/* Virsraksta stils */
+h1 {
+    color: #5c3c1e; /* Brūns teksts */
+    font-size: 24px; /* Teksta lielums */
+    margin-top: 10px; /* Augšējā atstarpe */
+}
+
+/* Attēlu noapaļošana */
+img {
+    border-radius: 10px; /* Noapaļoti stūri */
+}
+
+/* Dzērienu pogas */
+.dzerienuPogas {
+    background: #8b5e3b; /* Brūna krāsa */
+    color: white; /* Balts teksts */
+    border: none; /* Noņem apmali */
+    padding: 10px 20px; /* Atstarpes */
+    margin: 5px; /* Atstarpe starp pogām */
+    cursor: pointer; /* Maina kursoru uz klikšķināmu */
+    border-radius: 5px; /* Noapaļoti stūri */
+    transition: background 0.3s; /* Gluda pāreja */
+}
+
+/* Pogas hover efekts */
+.dzerienuPogas:hover {
+    background: #5c3c1e; /* Tumšāka brūna nokrāsa */
+}
+
+/* Krūzītes attēls */
+#kruzite {
+    display: block;
+    margin: 10px auto; /* Centē attēlu */
+}
+
+/* Kanvas laukuma stils */
+canvas {
+    background: #fff;
+    border-radius: 5px; /* Noapaļoti stūri */
+}
+
+/* Pēdējā poga (maksāšanas poga) */
+button:last-child {
+    background: #4CAF50; /* Zaļa krāsa */
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+/* Maksāšanas pogas hover efekts */
+button:last-child:hover {
+    background: #388E3C; /* Tumšāka zaļa nokrāsa */
+}
