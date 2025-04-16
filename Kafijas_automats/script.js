@@ -1,40 +1,73 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Izvēlamies visus dzērienu pogu elementus
-    const drinkButtons = document.querySelectorAll(".dzerienuPogas");
-    
-    // Izvēlamies krūzītes attēla elementu
-    const cupImage = document.getElementById("kruzite");
-    
-    // Izvēlamies apmaksas pogu
-    const payButton = document.querySelector("button:last-child");
-    
-    // Izvēlamies kanvas elementu un iegūstam tā kontekstu
-    const canvas = document.getElementById("laukums");
-    const ctx = canvas.getContext("2d");
+// Atrodam visus dzērienu pogas
+const dzPogas = document.querySelectorAll('.dzerienuPogas');
+const kruzite = document.getElementById('kruzite');
+const pogaNauda = document.querySelector('#rinda3Kolonna2 button');
+const laukums = document.getElementById('laukums');
+const ctx = laukums.getContext('2d');
 
-    // Iestatām kanvas izmērus
-    canvas.width = 150;
-    canvas.height = 100;
+let izveletsDzeriens = null;
+let samaksats = false;
 
-    // Funkcija, kas zīmē kafiju kanvas laukumā
-    function drawCoffee() {
-        ctx.fillStyle = "#6F4E37"; // Kafijas brūnā krāsa
-        ctx.fillRect(50, 50, 50, 30); // Zīmē kafijas taisnstūri kanvā
-    }
+// Iestatām canvas izmērus
+laukums.width = 200;
+laukums.height = 150;
 
-    // Pievienojam notikumu klausītāju visām dzērienu pogām
-    drinkButtons.forEach(button => {
-        button.addEventListener("click", function () {
-            // Nomaina krūzītes attēlu uz pilnu kafijas attēlu
-            cupImage.src = "https://cdn-icons-png.flaticon.com/512/924/924514.png";
-            
-            // Izsauc funkciju, kas zīmē kafiju kanvas laukumā
-            drawCoffee();
-        });
-    });
+// Noklusēts canvas stāvoklis
+function notiritCanvas() {
+    ctx.clearRect(0, 0, laukums.width, laukums.height);
+}
 
-    // Pievienojam notikumu klausītāju apmaksas pogai
-    payButton.addEventListener("click", function () {
-        alert("Apmaksa veikta! Jūsu dzēriens ir gatavs."); // Parāda paziņojumu par veiksmīgu apmaksu
+// Dzēriena izvēle
+dzPogas.forEach((poga, index) => {
+    poga.addEventListener('click', () => {
+        izveletsDzeriens = `Dzēriens ${index + 1}`;
+        alert(`Izvēlēts: ${izveletsDzeriens}. Lūdzu samaksājiet.`);
+        samaksats = false;
+        notiritCanvas();
     });
 });
+
+// "Maksājums"
+pogaNauda.addEventListener('click', () => {
+    if (!izveletsDzeriens) {
+        alert('Lūdzu izvēlieties dzērienu vispirms!');
+        return;
+    }
+
+    samaksats = true;
+    alert('Maksājums pieņemts! Lejam dzērienu...');
+    lejamKafiju();
+});
+
+// Funkcija "lejam" kafiju
+function lejamKafiju() {
+    // Pārvietojam krūzīti uz lejas daļu
+    kruzite.style.transition = 'transform 1s';
+    kruzite.style.transform = 'translateY(20px)';
+
+  // Zīmējam horizontālu kafijas straumi
+ctx.fillStyle = 'brown';
+let x = 0;
+
+let animacija = setInterval(() => {
+    if (x >= laukums.width) {
+        clearInterval(animacija);
+        alert(`${izveletsDzeriens} gatavs!`);
+        reset();
+    } else {
+        ctx.fillRect(0, laukums.height / 2 - 10, x, 20); // horizontāla līnija augstumā 20px
+        x += 5;
+    }
+}, 100);
+
+}
+
+// Atgriež stāvokli sākumā
+function reset() {
+    setTimeout(() => {
+        izveletsDzeriens = null;
+        samaksats = false;
+        kruzite.style.transform = 'translateY(0)';
+        notiritCanvas();
+    }, 2000);
+}
